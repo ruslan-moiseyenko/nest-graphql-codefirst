@@ -6,7 +6,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Coffee {
   @PrimaryGeneratedColumn()
   @Field(() => ID, { description: 'The id of the coffee' })
-  id: string;
+  id: number;
 
   @Column()
   name: string;
