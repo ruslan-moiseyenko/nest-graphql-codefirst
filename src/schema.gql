@@ -2,6 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+interface Drink {
+  name: String!
+}
+
 type Flavor {
   id: ID!
   name: String!
@@ -9,21 +13,24 @@ type Flavor {
 }
 
 """A coffee model"""
-type Coffee {
+type Coffee implements Drink {
+  name: String!
+
   """The id of the coffee"""
   id: ID!
-  name: String!
   brand: String!
   flavors: [Flavor!]!
-  createdAt: Timestamp
+  createdAt: Date
 }
 
-"""
-`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
-"""
-scalar Timestamp
+type Tea implements Drink {
+  name: String!
+}
+
+scalar Date
 
 type Query {
+  drinks: [Drink!]!
   coffees: [Coffee!]!
   coffee(id: ID!): Coffee!
 }
